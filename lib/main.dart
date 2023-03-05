@@ -109,6 +109,7 @@ class App extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                       color: const Color(0xff1f2123),
                       borderRadius: BorderRadius.circular(25)),
@@ -117,8 +118,9 @@ class App extends StatelessWidget {
                     horizontal: 10,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(30),
+                    padding: const EdgeInsets.all(20),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,9 +134,10 @@ class App extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 const Text(
                                   '6 428',
@@ -149,14 +152,25 @@ class App extends StatelessWidget {
                                 Text(
                                   'EUR',
                                   style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: 18,
+                                    color: Colors.white.withOpacity(0.7),
+                                    fontSize: 16,
                                   ),
                                 ),
                               ],
                             ),
                           ],
-                        )
+                        ),
+                        Transform.translate(
+                          offset: const Offset(-5, 25),
+                          child: Transform.scale(
+                            scale: 2.2,
+                            child: const Icon(
+                              Icons.euro_rounded,
+                              color: Colors.white,
+                              size: 88,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
