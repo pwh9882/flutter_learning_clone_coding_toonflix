@@ -15,9 +15,7 @@ class App extends StatelessWidget {
             headline1: TextStyle(
           color: Color(0xFF232B55),
         )),
-        cardTheme: const CardTheme(
-          color: Color(0xFFF4EDDB),
-        ),
+        cardColor: const Color((0xFFF4EDDB)),
       ),
       home: const HomeScreen(),
     );
