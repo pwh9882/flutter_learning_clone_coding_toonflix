@@ -20,8 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       --totalSeconds;
       if (totalSeconds == 0) {
-        onPausePressed();
-        totalSeconds = twentyFiveMinutes;
+        onResetPressed();
         totalPomodoros++;
       }
     });
@@ -39,6 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isRunning = false;
     });
+  }
+
+  void onResetPressed() {
+    onPausePressed();
+    totalSeconds = twentyFiveMinutes;
   }
 
   String format(int seconds) {
@@ -69,18 +73,28 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Flexible(
             flex: 2,
-            child: Center(
-              child: IconButton(
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                onPressed: isRunning ? onPausePressed : onStartPressed,
-                icon: Icon(isRunning
-                    ? Icons.pause_circle_outline
-                    : Icons.play_circle_outline),
-                //    isRunning
-                //     ? const Icon(Icons.pause_circle_outline)
-                //     : const Icon(Icons.play_circle_outline),
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  iconSize: 120,
+                  color: Theme.of(context).cardColor,
+                  onPressed: isRunning ? onPausePressed : onStartPressed,
+                  icon: Icon(isRunning
+                      ? Icons.pause_circle_outline
+                      : Icons.play_circle_outline),
+                  //    isRunning
+                  //     ? const Icon(Icons.pause_circle_outline)
+                  //     : const Icon(Icons.play_circle_outline),
+                ),
+                IconButton(
+                  onPressed: isRunning ? onResetPressed : () {},
+                  color: Theme.of(context).cardColor,
+                  icon: const Icon(
+                    Icons.refresh_outlined,
+                  ),
+                )
+              ],
             ),
           ),
           Flexible(
