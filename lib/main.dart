@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_clone_coding_toonflix/screens/home_screen.dart';
-import 'package:flutter_learning_clone_coding_toonflix/services/api_service.dart';
 
 void main() {
-  ApiService().getTodaysToons();
+  // ApiService().getTodaysToons();
   runApp(const App());
 }
 
