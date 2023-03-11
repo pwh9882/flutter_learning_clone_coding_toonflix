@@ -11,7 +11,9 @@ class ApiService {
   static Future<List<WebtoonModel>> getTodaysToons() async {
     List<WebtoonModel> webtoonInstances = [];
     final url = Uri.parse('$baseUrl/$today');
-    final response = await http.get(url);
+    final response = await http.get(
+      url,
+    );
     if (response.statusCode == 200) {
       // print(response.body);
       final List<dynamic> webtoons = jsonDecode(response.body);
