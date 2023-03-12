@@ -27,24 +27,27 @@ class Webtoon extends StatelessWidget {
       },
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 7,
-                    offset: const Offset(10, 10),
-                    color: Colors.black.withOpacity(0.5),
-                  )
-                ]),
-            clipBehavior: Clip.hardEdge,
-            width: 250,
-            child: Image.network(
-              webtoon.thumbnail,
-              headers: const {
-                "User-Agent":
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-              },
+          Hero(
+            tag: webtoon.id,
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 7,
+                      offset: const Offset(10, 10),
+                      color: Colors.black.withOpacity(0.5),
+                    )
+                  ]),
+              clipBehavior: Clip.hardEdge,
+              width: 250,
+              child: Image.network(
+                webtoon.thumbnail,
+                headers: const {
+                  "User-Agent":
+                      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+                },
+              ),
             ),
           ),
           const SizedBox(
