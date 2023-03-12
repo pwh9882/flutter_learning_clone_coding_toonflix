@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_detail_model.dart';
+import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_episode_model.dart';
 import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_model.dart';
 
 class DetailScreen extends StatelessWidget {
   final WebtoonModel webtoon;
   Future<WebtoonDetailModel> webtoonDetail;
+  Future<List<WebtoonEpisodModel>> webtoonEpisodes;
 
   DetailScreen({
     super.key,
     required this.webtoon,
     required this.webtoonDetail,
+    required this.webtoonEpisodes,
   });
 
   @override

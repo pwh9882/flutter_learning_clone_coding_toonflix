@@ -24,6 +24,8 @@ class Webtoon extends StatelessWidget {
             builder: ((context) => DetailScreen(
                   webtoon: webtoon,
                   webtoonDetail: ApiService.getToonDetailById(webtoon.id),
+                  webtoonEpisodes:
+                      ApiService.getToonLatestEpisodesById(webtoon.id),
                 )),
             fullscreenDialog: true,
           ),
