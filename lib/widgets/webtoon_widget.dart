@@ -23,7 +23,7 @@ class Webtoon extends StatelessWidget {
           CupertinoPageRoute(
             builder: ((context) => DetailScreen(
                   webtoon: webtoon,
-                  webtoonDetail: ApiService.getDetail(webtoon.id),
+                  webtoonDetail: ApiService.getToonDetailById(webtoon.id),
                 )),
             fullscreenDialog: true,
           ),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_detail_model.dart';
+import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_episode_model.dart';
 import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -28,13 +29,31 @@ class ApiService {
     throw Error();
   }
 
-  static Future<WebtoonDetailModel> getDetail(id) async {
+  static Future<WebtoonDetailModel> getToonDetailById(String id) async {
     final url = Uri.parse('$baseUrl/$id');
     final response = await http.get(url);
-    final details = jsonDecode(response.body);
+    final json = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      print(details);
-      return WebtoonDetailModel.fromJson(details);
+      // print(details);
+      return WebtoonDetailModel.fromJson(json);
+    }
+    throw Error();
+  }
+
+  static Future<List<WebtoonEpisodModel>> getToonLatestEpisodesById(
+    String id,
+  ) async {
+    List<WebtoonEpisodModel> webtoonEpsiodeInstances = [];
+    final url = Uri.parse('$baseUrl/$id/episodes');
+    final response = await http.get(url);
+    final episodesAsJson = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      for (var episodeAsJson in episodesAsJson) {
+        webtoonEpsiodeInstances.add(WebtoonEpisodModel.fromJson(episodeAsJson));
+      }
+      return webtoonEpsiodeInstances;
+      // print(details);
+      // return WebtoonEpisodModel.fromJson(json);
     }
     throw Error();
   }
