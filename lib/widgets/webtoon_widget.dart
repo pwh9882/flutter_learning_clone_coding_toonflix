@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_model.dart';
 import 'package:flutter_learning_clone_coding_toonflix/screens/detail_screen.dart';
+import 'package:flutter_learning_clone_coding_toonflix/services/api_service.dart';
 
 class Webtoon extends StatelessWidget {
   final WebtoonModel webtoon;
@@ -20,7 +21,10 @@ class Webtoon extends StatelessWidget {
           context,
           // MaterialPageRoute
           CupertinoPageRoute(
-            builder: ((context) => DetailScreen(webtoon: webtoon)),
+            builder: ((context) => DetailScreen(
+                  webtoon: webtoon,
+                  webtoonDetail: ApiService.getDetail(webtoon.id),
+                )),
             fullscreenDialog: true,
           ),
         );

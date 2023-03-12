@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_detail_model.dart';
 import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,6 +24,17 @@ class ApiService {
         // print(toon.title);
       }
       return webtoonInstances;
+    }
+    throw Error();
+  }
+
+  static Future<WebtoonDetailModel> getDetail(id) async {
+    final url = Uri.parse('$baseUrl/$id');
+    final response = await http.get(url);
+    final details = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      print(details);
+      return WebtoonDetailModel.fromJson(details);
     }
     throw Error();
   }

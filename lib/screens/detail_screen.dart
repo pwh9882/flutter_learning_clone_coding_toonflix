@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_detail_model.dart';
 import 'package:flutter_learning_clone_coding_toonflix/models/webtoon_model.dart';
 
 class DetailScreen extends StatelessWidget {
   final WebtoonModel webtoon;
-  const DetailScreen({
+  Future<WebtoonDetailModel> webtoonDetail;
+
+  DetailScreen({
     super.key,
     required this.webtoon,
+    required this.webtoonDetail,
   });
 
   @override
@@ -59,6 +63,17 @@ class DetailScreen extends StatelessWidget {
               ),
             ],
           ),
+          FutureBuilder(
+            future: webtoonDetail,
+            builder: ((context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data!.about);
+              }
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }),
+          )
         ],
       ),
     );
